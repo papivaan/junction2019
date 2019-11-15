@@ -8,13 +8,15 @@ const App = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    axios.get('http://localhost:8888/.netlify/functions/hello')
-      .then(data => {
-        setData(data);
-      })
-      .catch(error => {
-        console.log(error);
-      })
+    if (!data) {
+      axios.get('http://localhost:8888/.netlify/functions/getData')
+        .then(data => {
+          setData(data);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
   });
 
   return (
