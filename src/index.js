@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -11,14 +11,29 @@ import AuthLayout from "./layouts/Auth.jsx";
 
 import * as serviceWorker from "./serviceWorker";
 
+import data_json from "./assets/data/data_2019.json"
+
+const mappedData = data_json.map(d => {
+  const location = d.map_data.candidates.length > 0 && d.map_data.candidates[0].geometry.location
+  return { ...d, status: d.status.split(' '), location }
+});
+
+const DataContext = createContext(mappedData)
+const useData = () => useContext(DataContext)
+
+const App = () => (
+  <DataContext.Provider>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/admin" render={props => <AdminLayout {...props} />} />
+        <Route path="/auth" render={props => <AuthLayout {...props} />} />
+        <Redirect from="/" to="/admin/index" />
+      </Switch>
+    </BrowserRouter>
+  </DataContext.Provider>
+);
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Route path="/auth" render={props => <AuthLayout {...props} />} />
-      <Redirect from="/" to="/admin/index" />
-    </Switch>
-  </BrowserRouter>,
+  <App />,
   document.getElementById("root")
 );
 
