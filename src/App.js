@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    axios.get('http://localhost:8888/.netlify/functions/hello')
+      .then(data => {
+        setData(data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +24,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {data && <pre><code>{JSON.stringify(data, null, 2)}</code></pre>}
       </header>
     </div>
   );
