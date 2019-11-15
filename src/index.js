@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -9,22 +9,12 @@ import "./assets/scss/argon-dashboard-react.scss";
 import AdminLayout from "./layouts/Admin.jsx";
 import AuthLayout from "./layouts/Auth.jsx";
 
+import { DataProvider } from "./contexts/data-context";
+
 import * as serviceWorker from "./serviceWorker";
 
-import data_json from "./assets/data/data_2019.json";
-
-const mappedData = data_json.map(d => {
-  const location =
-    d.map_data.candidates.length > 0 &&
-    d.map_data.candidates[0].geometry.location;
-  return { ...d, status: d.status.split(" "), location };
-});
-
-const DataContext = createContext(mappedData);
-const useData = () => useContext(DataContext);
-
 const App = () => (
-  <DataContext.Provider>
+  <DataProvider>
     <BrowserRouter>
       <Switch>
         <Route path="/admin" render={props => <AdminLayout {...props} />} />
@@ -32,7 +22,7 @@ const App = () => (
         <Redirect from="/" to="/admin/index" />
       </Switch>
     </BrowserRouter>
-  </DataContext.Provider>
+  </DataProvider>
 );
 ReactDOM.render(<App />, document.getElementById("root"));
 
