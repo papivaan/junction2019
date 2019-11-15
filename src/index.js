@@ -11,15 +11,17 @@ import AuthLayout from "./layouts/Auth.jsx";
 
 import * as serviceWorker from "./serviceWorker";
 
-import data_json from "./assets/data/data_2019.json"
+import data_json from "./assets/data/data_2019.json";
 
 const mappedData = data_json.map(d => {
-  const location = d.map_data.candidates.length > 0 && d.map_data.candidates[0].geometry.location
-  return { ...d, status: d.status.split(' '), location }
+  const location =
+    d.map_data.candidates.length > 0 &&
+    d.map_data.candidates[0].geometry.location;
+  return { ...d, status: d.status.split(" "), location };
 });
 
-const DataContext = createContext(mappedData)
-const useData = () => useContext(DataContext)
+const DataContext = createContext(mappedData);
+const useData = () => useContext(DataContext);
 
 const App = () => (
   <DataContext.Provider>
@@ -32,10 +34,7 @@ const App = () => (
     </BrowserRouter>
   </DataContext.Provider>
 );
-ReactDOM.render(
-  <App />,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
