@@ -9,6 +9,7 @@ import "./assets/scss/argon-dashboard-react.scss";
 import AuthLayout from "./layouts/Auth.jsx";
 import ExampleLayout from "./layouts/Example.jsx";
 import AdminLayout from "./layouts/Admin.jsx";
+import CivilLayout from "./layouts/Civil.jsx";
 import SiteManagerLayout from "./layouts/SiteManager.jsx";
 
 import { DataProvider } from "./contexts/data-context";
@@ -19,11 +20,12 @@ const App = () => (
   <DataProvider>
     <BrowserRouter>
       <Switch>
-        <Route path="/admin" render={props => <AdminLayout {...props} />} />
         <Route
           path="/examples"
           render={props => <ExampleLayout {...props} />}
         />
+        <Route path="/admin" render={props => <AdminLayout {...props} />} />
+        <Route path="/civil" render={props => <CivilLayout {...props} />} />
         <Route
           path="/site-manager"
           render={props => <SiteManagerLayout {...props} />}

@@ -49,7 +49,7 @@ const loginRoles = [
   {
     icon: "circle-08",
     text: "Civil",
-    link: "/examples/maps"
+    link: "/civil"
   },
   {
     icon: "settings",
