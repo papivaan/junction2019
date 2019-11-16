@@ -53,7 +53,7 @@ const loginRoles = [
   },
   {
     icon: "settings",
-    text: "Employee Tiina",
+    text: "Employee",
     link: "/employee"
   },
   {

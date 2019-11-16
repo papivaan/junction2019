@@ -134,7 +134,8 @@ export const employeeRoutes = [
     name: "Employee tasks",
     icon: "ni ni-box-2 text-primary",
     component: EmployeeTasks,
-    layout: "/employee"
+    layout: "/employee",
+    dynamic: true
   }
 ];
 
