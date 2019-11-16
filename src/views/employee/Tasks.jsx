@@ -18,6 +18,8 @@ import { updateTask, deleteTask } from "../../graphql/mutations";
 
 import Header from "../../components/Headers/Header.jsx";
 
+import sendSMS from "../../utils/sendSMS";
+
 const Tasks = ({ match }) => {
   const { loading, error, data } = useQuery(
     gql`
@@ -124,6 +126,11 @@ const Task = ({ id, description, orderId, status }) => {
   const handleClick = status => {
     switch (status) {
       case "PENDING":
+        sendSMS({
+          phone: "+358500255967",
+          orderId: "123",
+          description: status
+        });
         update({
           variables: {
             input: {

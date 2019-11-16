@@ -9,5 +9,7 @@ export default ({ phone, orderId, description }) => {
       order: orderId,
       description
     }
-  });
+  })
+    .then(() => console.log("Great success!"))
+    .catch(e => console.error(e));
 };
