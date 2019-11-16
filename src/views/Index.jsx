@@ -32,7 +32,7 @@ import { chartOptions, parseOptions } from "../variables/charts.jsx";
 
 import Header from "../components/Headers/Header.jsx";
 import MixedChart from "../components/Charts/MixedChart";
-import BarChart from "../components/Charts/BarChart";
+import PieChart from "../components/Charts/PieChart";
 
 import useComponentWillMount from "../hooks/useComponentWillMount";
 
@@ -55,7 +55,7 @@ const Index = () => {
       <Container className="mt--7" fluid>
         <Row>
           <Col className="mb-5 mb-xl-0" xl="8">
-          <MixedChart
+            <MixedChart
               title="Budget comparison"
               data={{
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -73,7 +73,17 @@ const Index = () => {
               }} />
           </Col>
           <Col xl="4">
-            <BarChart />
+            <PieChart
+              title="Pie chart"
+              data={
+                [
+                  { label: 'Red', value: 300 },
+                  { label: 'Blue', value: 50 },
+                  { label: 'Paavo', value: 100},
+                  { label: 'Keijo', value: 45}
+                ]
+              }
+            />
           </Col>
         </Row>
         <Row className="mt-5">

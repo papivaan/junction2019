@@ -23,6 +23,8 @@ import { Button, Card, CardBody, Row, Col } from "reactstrap";
 
 import Icon from "../components/Icon";
 
+import useGlobalState from "../hooks/useGlobalState";
+
 const LoginButton = ({ icon, text, link }) => {
   const history = useHistory();
 
@@ -91,34 +93,14 @@ const Login = () => {
           <CardBody className="px-lg-5 py-lg-5">
             <h2 className="text-muted">Login as...</h2>
             <Row>
-              {loginRoles.map(login => (
-                <Col sm="12" className="my-2">
+              {loginRoles.map((login, idx) => (
+                <Col key={idx} sm="12" className="my-2">
                   <LoginButton {...login} />
                 </Col>
               ))}
             </Row>
           </CardBody>
         </Card>
-        <Row className="mt-3">
-          <Col xs="6">
-            <a
-              className="text-light"
-              href="#pablo"
-              onClick={e => e.preventDefault()}
-            >
-              <small>Forgot password?</small>
-            </a>
-          </Col>
-          <Col className="text-right" xs="6">
-            <a
-              className="text-light"
-              href="#pablo"
-              onClick={e => e.preventDefault()}
-            >
-              <small>Create new account</small>
-            </a>
-          </Col>
-        </Row>
       </Col>
     </>
   );

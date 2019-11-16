@@ -11,6 +11,14 @@ export const getEmployee = `query GetEmployee($id: ID!) {
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -29,6 +37,17 @@ export const listEmployees = `query ListEmployees(
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
@@ -46,6 +65,17 @@ export const getTask = `query GetTask($id: ID!) {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
@@ -67,6 +97,15 @@ export const listTasks = `query ListTasks(
         id
         name
         phone
+        tasks {
+          items {
+            id
+            orderId
+            description
+            status
+          }
+          nextToken
+        }
       }
       status
     }

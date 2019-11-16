@@ -9,8 +9,8 @@
 					"defaultAuthentication": {
 						"authenticationType": "API_KEY",
 						"apiKeyConfig": {
-							"description": "junction2019-api-key",
-							"apiKeyExpirationDays": "30"
+							"description": "",
+							"apiKeyExpirationDays": "12"
 						}
 					}
 				}
