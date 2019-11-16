@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
 
     const message = {
         from: 'STARA',
-        to: '+358443578875',
+        to: params.phone,
         message: `You have a new task for work ${params.order}: ${params.description}`
     };
 
