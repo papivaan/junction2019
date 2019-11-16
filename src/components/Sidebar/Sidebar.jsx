@@ -114,7 +114,7 @@ class Sidebar extends React.Component {
     }
     return (
       <Navbar
-        className="navbar-vertical fixed-left navbar-light bg-white"
+        className="navbar-vertical fixed-left navbar-light bg-light-gray"
         expand="md"
         id="sidenav-main"
       >
@@ -129,7 +129,7 @@ class Sidebar extends React.Component {
           </button>
           {/* Brand */}
           {logo ? (
-            <NavbarBrand className="pt-0" {...navbarBrandProps}>
+            <NavbarBrand className="pt-2 pb-2" {...navbarBrandProps} style={{ backgroundColor: '#0000bf', borderRadius: '6px' }}>
               <img
                 alt={logo.imgAlt}
                 className="navbar-brand-img"
@@ -205,10 +205,10 @@ class Sidebar extends React.Component {
                         <img alt={logo.imgAlt} src={logo.imgSrc} />
                       </Link>
                     ) : (
-                      <a href={logo.outterLink}>
-                        <img alt={logo.imgAlt} src={logo.imgSrc} />
-                      </a>
-                    )}
+                        <a href={logo.outterLink}>
+                          <img alt={logo.imgAlt} src={logo.imgSrc} />
+                        </a>
+                      )}
                   </Col>
                 ) : null}
                 <Col className="collapse-close" xs="6">
@@ -244,27 +244,16 @@ class Sidebar extends React.Component {
             {/* Divider */}
             <hr className="my-3" />
             {/* Heading */}
-            <h6 className="navbar-heading text-muted">Documentation</h6>
+            <h6 className="navbar-heading text-muted">Company</h6>
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
               <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/overview?ref=adr-admin-sidebar">
-                  <i className="ni ni-spaceship" />
-                  Getting started
+                <NavLink target="_blank" href="https://www.hel.fi/stara/fi">
+                  <i className="ni ni-badge" />
+                  Stara
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/colors?ref=adr-admin-sidebar">
-                  <i className="ni ni-palette" />
-                  Foundation
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/alerts?ref=adr-admin-sidebar">
-                  <i className="ni ni-ui-04" />
-                  Components
-                </NavLink>
-              </NavItem>
+
             </Nav>
           </Collapse>
         </Container>
