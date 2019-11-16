@@ -25,7 +25,41 @@ import AdminFooter from "./AdminFooter";
 
 class Login extends React.Component {
   render() {
-    return <AdminFooter />;
+    return (
+      <footer className="footer">
+        <Container className="px-4">
+          <Row className="align-items-center justify-content-xl-between">
+            <Col md="6">
+              <div className="copyright text-center text-md-left text-muted">
+                © 2019{" "}
+                <a
+                  className="font-weight-bold ml-1"
+                  href="https://www.xiple.io/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Team Xiple
+                </a>
+              </div>
+            </Col>
+
+            <Col md="6">
+              <Nav className="nav-footer justify-content-center justify-content-md-end">
+                <NavItem>
+                  <NavLink
+                    href="https://www.xiple.io/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    About Us
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
+    );
   }
 }
 
