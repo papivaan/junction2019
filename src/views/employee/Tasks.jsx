@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import {
   Button,
@@ -14,10 +14,11 @@ import {
 } from "reactstrap";
 
 import { getEmployee } from "../../graphql/queries";
+import { updateTask, deleteTask } from "../../graphql/mutations";
 
 import Header from "../../components/Headers/Header.jsx";
 
-const Tasks = ({ match, location }) => {
+const Tasks = ({ match }) => {
   const { loading, error, data } = useQuery(
     gql`
       ${getEmployee}
@@ -101,17 +102,88 @@ const TaskCategory = ({ title, items }) => {
         </CardHeader>
       </Card>
       {items.map(item => (
-        <Card body className="mt-2 mb-2">
-          <CardTitle>
-            <h3>{item.description}</h3>
-          </CardTitle>
-          <CardText>
-            <p>Order: {item.orderId}</p>
-          </CardText>
-          <Button onClick={() => console.log(item.status)}>Button</Button>
-        </Card>
+        <Task key={item.id} {...item} />
       ))}
     </>
+  );
+};
+
+const Task = ({ id, description, orderId, status }) => {
+  const [update] = useMutation(
+    gql`
+      ${updateTask}
+    `
+  );
+
+  const [del] = useMutation(
+    gql`
+      ${deleteTask}
+    `
+  );
+
+  const handleClick = status => {
+    switch (status) {
+      case "PENDING":
+        update({
+          variables: {
+            input: {
+              id,
+              status: "IN_PROGRESS"
+            }
+          }
+        });
+        break;
+
+      case "IN_PROGRESS":
+        update({
+          variables: {
+            input: {
+              id,
+              status: "DONE"
+            }
+          }
+        });
+        break;
+
+      case "DONE":
+        del({
+          variables: {
+            input: {
+              id
+            }
+          }
+        });
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const renderButtonText = () => {
+    switch (status) {
+      case "PENDING":
+        return "Take task";
+
+      case "IN_PROGRESS":
+        return "Make done";
+
+      case "DONE":
+        return "Delete";
+
+      default:
+        break;
+    }
+  };
+
+  return (
+    <Card body className="mt-2 mb-2">
+      <CardTitle>
+        <h3>{description}</h3>
+      </CardTitle>
+      <CardText>Order: {orderId}</CardText>
+      <Button onClick={() => handleClick(status)}>{renderButtonText()}</Button>
+    </Card>
   );
 };
 

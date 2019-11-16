@@ -18,7 +18,7 @@ import Header from "../../components/Headers/Header.jsx";
 import { listEmployees } from "../../graphql/queries";
 
 const Dashboard = ({ match, location }) => {
-  const { data, loading, error } = useQuery(
+  const { data } = useQuery(
     gql`
       ${listEmployees}
     `
