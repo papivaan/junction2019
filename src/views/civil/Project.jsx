@@ -18,7 +18,7 @@ const ProjectView = (props) => {
             {order &&
                 <Container className="mt--7" fluid>
                     <Row>
-                        <Col xl="8">
+                        <Col xl="8" className="mb-4">
                             <Card className="shadow border-0">
                                 <CardHeader>
                                     <h3 className="mb-0">{props.match.params.id} {order.short_text}</h3>
