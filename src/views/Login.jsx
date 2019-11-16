@@ -16,38 +16,40 @@
 
 */
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 // reactstrap components
-import {
-  Button,
-  Card,
-  CardBody,
-  Row,
-  Col
-} from "reactstrap";
+import { Button, Card, CardBody, Row, Col } from "reactstrap";
 
 import Icon from "../components/Icon";
 
-const LoginButton = ({ icon, text, link }) => (
-  <Button
-    className="btn-neutral btn-icon"
-    style={{ display: "block" }}
-    color="default"
-    href={link}
-    onClick={e => e.preventDefault()}
-  >
-    <span className="btn-inner--icon">
-      <Icon iconName={icon} />
-    </span>
-    <span className="btn-inner--text">{text}</span>
-  </Button>
-);
+const LoginButton = ({ icon, text, link }) => {
+  const history = useHistory();
+
+  return (
+    <Button
+      className="btn-neutral btn-icon"
+      style={{ display: "block" }}
+      color="default"
+      href={link}
+      onClick={e => {
+        e.preventDefault();
+        history.push(link);
+      }}
+    >
+      <span className="btn-inner--icon">
+        <Icon iconName={icon} />
+      </span>
+      <span className="btn-inner--text">{text}</span>
+    </Button>
+  );
+};
 
 const loginRoles = [
   {
     icon: "circle-08",
     text: "Civil",
-    link: "/"
+    link: "/examples/maps"
   },
   {
     icon: "settings",
@@ -57,7 +59,7 @@ const loginRoles = [
   {
     icon: "single-02",
     text: "Site manager",
-    link: "/"
+    link: "/site-manager"
   },
   {
     icon: "hat-3",
@@ -73,6 +75,11 @@ const loginRoles = [
     icon: "shop",
     text: "Customer",
     link: "/"
+  },
+  {
+    icon: "satisfied",
+    text: "Examples",
+    link: "/examples"
   }
 ];
 

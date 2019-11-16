@@ -24,9 +24,9 @@ import AdminNavbar from "../components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "../components/Footers/AdminFooter.jsx";
 import Sidebar from "../components/Sidebar/Sidebar.jsx";
 
-import { adminRoutes as routes } from "../routes";
+import { siteManagerRoutes as routes } from "../routes";
 
-class Admin extends React.Component {
+class SiteManager extends React.Component {
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -34,7 +34,7 @@ class Admin extends React.Component {
   }
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/site-manager") {
         return (
           <Route
             exact
@@ -67,7 +67,7 @@ class Admin extends React.Component {
           {...this.props}
           routes={routes}
           logo={{
-            innerLink: "/admin/index",
+            innerLink: "/site-manager/index",
             imgSrc: require("../assets/img/brand/argon-react.png"),
             imgAlt: "..."
           }}
@@ -87,4 +87,4 @@ class Admin extends React.Component {
   }
 }
 
-export default Admin;
+export default SiteManager;

@@ -20,61 +20,59 @@ import Login from "./views/Login.jsx";
 
 import Profile from "./views/examples/Profile.jsx";
 import Maps from "./views/examples/Maps.jsx";
-import Register from "./views/examples/Register.jsx";
 import Tables from "./views/examples/Tables.jsx";
 import Icons from "./views/examples/Icons.jsx";
 
+// Site manager views
+import SiteManagerDashboard from "./views/site-manager/Dashboard.jsx";
+
 import DynamicTest from "./views/DynamicTest.jsx";
 
-var routes = [
+export const exampleRoutes = [
   {
-    path: "/index",
-    name: "Dashboard",
-    icon: "ni ni-tv-2 text-primary",
+    path: "/",
+    name: "Examples",
+    icon: "ni ni-tv-2 text-blue",
     component: Index,
-    layout: "/admin"
+    layout: "/examples"
   },
   {
     path: "/icons",
     name: "Icons",
     icon: "ni ni-planet text-blue",
     component: Icons,
-    layout: "/admin"
+    layout: "/examples"
   },
   {
     path: "/maps",
     name: "Maps",
     icon: "ni ni-pin-3 text-orange",
     component: Maps,
-    layout: "/admin"
+    layout: "/examples"
   },
   {
     path: "/user-profile",
     name: "User Profile",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
-    layout: "/admin"
+    layout: "/examples"
   },
   {
     path: "/tables",
     name: "Tables",
     icon: "ni ni-bullet-list-67 text-red",
     component: Tables,
+    layout: "/examples"
+  }
+];
+
+export const adminRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: Index,
     layout: "/admin"
-  },
-  {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-info",
-    component: Login,
-    layout: "/auth"
-  },
-  {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
-    component: Register,
-    layout: "/auth"
   },
   // TODO: Create dynamic pages like here under.
   // Set `dynamic: true` to filter page out from the sidebar
@@ -94,4 +92,37 @@ var routes = [
     dynamic: true
   }
 ];
+
+export const siteManagerRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: SiteManagerDashboard,
+    layout: "/site-manager"
+  },
+  {
+    path: "/details",
+    name: "Details",
+    icon: "ni ni-glasses-2 text-primary",
+    component: Index,
+    layout: "/site-manager"
+  }
+];
+
+const routes = [
+  ...adminRoutes,
+  {
+    path: "/login",
+    name: "Login",
+    icon: "ni ni-key-25 text-info",
+    component: Login,
+    layout: "/auth"
+  },
+  // Role based routes
+  ...siteManagerRoutes,
+  // Example routes
+  ...exampleRoutes
+];
+
 export default routes;
