@@ -4,12 +4,13 @@ import {
 	withScriptjs,
 	withGoogleMap,
 	GoogleMap,
-	Marker
 } from "react-google-maps";
 
 import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerClusterer";
 
 import config from "./config";
+
+import MarkerWithInfoWindow from "./MarkerWithInfoWindow";
 
 const Map = ({ data }) => {
 	const MapWrapper = withScriptjs(
@@ -64,14 +65,17 @@ const Map = ({ data }) => {
 				}}
 			>
 				<MarkerClusterer
-					onClick={() => console.log('pööö')}
 					averageCenter
 					enableRetinaIcons
 					gridSize={60}
 				>
-					{props.sites.map(site => (
-						<Marker key={site.order} position={site.location} />
-					)
+					{props.sites.map((site, i) => {
+						const key = site.find(s => s.short_text).short_text;
+						const location = site.find(s => s.location).location;
+						return (
+							<MarkerWithInfoWindow key={key} name={key} location={location} site={site} />
+						)
+					}
 					)}
 				</MarkerClusterer>
 			</GoogleMap>
@@ -81,7 +85,7 @@ const Map = ({ data }) => {
 		<MapWrapper
 			googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.googleMapsApiKey}`}
 			loadingElement={<div style={{ height: `100%` }} />}
-			sites={data.filter(d => !!d.location)}
+			sites={data}
 			containerElement={
 				<div
 					style={{ height: `600px` }}

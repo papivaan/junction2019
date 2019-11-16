@@ -27,8 +27,13 @@ import { useData } from "../../contexts/data-context"
 // core components
 import Header from "../../components/Headers/Header.jsx";
 
+import _ from "lodash"
+
 const Maps = () => {
   const { data } = useData();
+
+  const dataBySites = _.values(_.groupBy(data.filter(d => !!d.location), "location.lat"));
+
   return (
     <>
       <Header />
@@ -37,7 +42,7 @@ const Maps = () => {
         <Row>
           <div className="col">
             <Card className="shadow border-0">
-              <Map data={data} />
+              <Map data={dataBySites} />
             </Card>
           </div>
         </Row>
