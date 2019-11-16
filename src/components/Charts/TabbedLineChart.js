@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
-import Chart from "chart.js";
 import { Line } from "react-chartjs-2";
 import {
   Card,
@@ -12,11 +11,7 @@ import {
   Row
 } from "reactstrap";
 
-import {
-  chartExample1,
-  chartOptions,
-  parseOptions
-} from "../../variables/charts.jsx";
+import { chartExample1 } from "../../variables/charts.jsx";
 
 const TabbedLineChart = () => {
   const [activeNav, setActiveNav] = useState(1);
@@ -31,12 +26,6 @@ const TabbedLineChart = () => {
     };
     setTimeout(() => wow(), 1000);
   };
-
-  useEffect(() => {
-    if (window.Chart) {
-      parseOptions(Chart, chartOptions());
-    }
-  });
 
   return (
     <Card className="bg-gradient-default shadow">
