@@ -7,6 +7,7 @@ import "./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/scss/argon-dashboard-react.scss";
 
 import AuthLayout from "./layouts/Auth.jsx";
+import ExampleLayout from "./layouts/Example.jsx";
 import AdminLayout from "./layouts/Admin.jsx";
 import SiteManagerLayout from "./layouts/SiteManager.jsx";
 
@@ -19,6 +20,10 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Route path="/admin" render={props => <AdminLayout {...props} />} />
+        <Route
+          path="/examples"
+          render={props => <ExampleLayout {...props} />}
+        />
         <Route
           path="/site-manager"
           render={props => <SiteManagerLayout {...props} />}
