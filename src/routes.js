@@ -23,6 +23,8 @@ import Login from "./views/examples/Login.jsx";
 import Tables from "./views/examples/Tables.jsx";
 import Icons from "./views/examples/Icons.jsx";
 
+import DynamicTest from "./views/DynamicTest.jsx";
+
 var routes = [
   {
     path: "/index",
@@ -72,6 +74,23 @@ var routes = [
     icon: "ni ni-circle-08 text-pink",
     component: Register,
     layout: "/auth"
+  },
+  // TODO: Create dynamic pages like here under.
+  // Set `dynamic: true` to filter page out from the sidebar
+  {
+    path: "/test",
+    name: "Test",
+    icon: "ni ni-planet text-blue",
+    component: DynamicTest,
+    layout: "/admin"
+  },
+  {
+    path: "/test/:id",
+    name: "Test",
+    icon: "ni ni-key-25 text-orange",
+    component: DynamicTest,
+    layout: "/admin",
+    dynamic: true
   }
 ];
 export default routes;
