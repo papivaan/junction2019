@@ -33,6 +33,8 @@ import {
   Col
 } from "reactstrap";
 
+import Icon from "../../components/Icon";
+
 const LoginButton = ({ icon, text, link }) => (
   <Button
     className="btn-neutral btn-icon"
@@ -42,80 +44,39 @@ const LoginButton = ({ icon, text, link }) => (
     onClick={e => e.preventDefault()}
   >
     <span className="btn-inner--icon">
-      <img alt="..." src={icon} />
+      <Icon iconName={icon} />
     </span>
     <span className="btn-inner--text">{text}</span>
   </Button>
 );
+
+const loginRoles = [
+  {
+    icon: "active-40",
+    text: "GitHub",
+    link: "/"
+  },
+  {
+    icon: "caps-small",
+    text: "Google",
+    link: "/"
+  }
+];
 
 const Login = () => {
   return (
     <>
       <Col lg="5" md="7">
         <Card className="bg-secondary shadow border-0">
-          <CardHeader className="bg-transparent pb-5">
+          <CardBody className="px-lg-5 py-lg-5">
             <h2 className="text-muted">Login as...</h2>
             <Row>
-              <Col sm="6" className="mx-2 my-2">
-                <LoginButton
-                  icon={require("../../assets/img/icons/common/github.svg")}
-                  text="GitHub"
-                  link="#pablo"
-                />
-              </Col>
-              <Col sm="6" className="mx-2 my-2">
-                <LoginButton
-                  icon={require("../../assets/img/icons/common/google.svg")}
-                  text="Google"
-                  link="#pablo"
-                />
-              </Col>
+              {loginRoles.map(login => (
+                <Col sm="12" className="my-2">
+                  <LoginButton {...login} />
+                </Col>
+              ))}
             </Row>
-          </CardHeader>
-          <CardBody className="px-lg-5 py-lg-5">
-            <div className="text-center text-muted mb-4">
-              <small>Or sign in with credentials</small>
-            </div>
-            <Form role="form">
-              <FormGroup className="mb-3">
-                <InputGroup className="input-group-alternative">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="ni ni-email-83" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input placeholder="Email" type="email" />
-                </InputGroup>
-              </FormGroup>
-              <FormGroup>
-                <InputGroup className="input-group-alternative">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="ni ni-lock-circle-open" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input placeholder="Password" type="password" />
-                </InputGroup>
-              </FormGroup>
-              <div className="custom-control custom-control-alternative custom-checkbox">
-                <input
-                  className="custom-control-input"
-                  id=" customCheckLogin"
-                  type="checkbox"
-                />
-                <label
-                  className="custom-control-label"
-                  htmlFor=" customCheckLogin"
-                >
-                  <span className="text-muted">Remember me</span>
-                </label>
-              </div>
-              <div className="text-center">
-                <Button className="my-4" color="primary" type="button">
-                  Sign in
-                </Button>
-              </div>
-            </Form>
           </CardBody>
         </Card>
         <Row className="mt-3">
