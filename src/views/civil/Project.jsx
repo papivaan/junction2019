@@ -31,6 +31,10 @@ const ProjectView = (props) => {
                                                 <td>{order.description}</td>
                                             </tr>
                                             <tr>
+                                                <td>Address</td>
+                                                <td>{order.map_data.candidates[0] ? order.map_data.candidates[0].formatted_address : null}</td>
+                                            </tr>
+                                            <tr>
                                                 <td>Supervisor</td>
                                                 <td>{order.supervisor}</td>
                                             </tr>
