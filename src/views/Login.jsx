@@ -23,8 +23,6 @@ import { Button, Card, CardBody, Row, Col } from "reactstrap";
 
 import Icon from "../components/Icon";
 
-import useGlobalState from "../hooks/useGlobalState";
-
 const LoginButton = ({ icon, text, link }) => {
   const history = useHistory();
 
