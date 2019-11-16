@@ -36,6 +36,8 @@ import BarChart from "../components/Charts/BarChart";
 
 import useComponentWillMount from "../hooks/useComponentWillMount";
 
+import {useSearch} from '../contexts/search-context'
+
 const Index = () => {
   useComponentWillMount(() => {
     if (window.Chart) {
@@ -43,8 +45,11 @@ const Index = () => {
     }
   });
 
+  const { searchQuery } = useSearch()
+
   return (
     <>
+      <h1>{searchQuery}</h1>
       <Header />
       {/* Page content */}
       <Container className="mt--7" fluid>

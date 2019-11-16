@@ -10,19 +10,23 @@ import AdminLayout from "./layouts/Admin.jsx";
 import AuthLayout from "./layouts/Auth.jsx";
 
 import { DataProvider } from "./contexts/data-context";
+import { SearchProvider } from "./contexts/search-context";
 
 import * as serviceWorker from "./serviceWorker";
 
 const App = () => (
   <DataProvider>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/admin" render={props => <AdminLayout {...props} />} />
-        <Route path="/auth" render={props => <AuthLayout {...props} />} />
-        <Redirect from="/" to="/admin/index" />
-      </Switch>
-    </BrowserRouter>
+    <SearchProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/admin" render={props => <AdminLayout {...props} />} />
+          <Route path="/auth" render={props => <AuthLayout {...props} />} />
+          <Redirect from="/" to="/admin/index" />
+        </Switch>
+      </BrowserRouter>
+    </SearchProvider>
   </DataProvider>
+
 );
 ReactDOM.render(<App />, document.getElementById("root"));
 
