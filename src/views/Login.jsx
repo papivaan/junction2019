@@ -21,19 +21,12 @@ import React from "react";
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Row,
   Col
 } from "reactstrap";
 
-import Icon from "../../components/Icon";
+import Icon from "../components/Icon";
 
 const LoginButton = ({ icon, text, link }) => (
   <Button
@@ -52,13 +45,33 @@ const LoginButton = ({ icon, text, link }) => (
 
 const loginRoles = [
   {
-    icon: "active-40",
-    text: "GitHub",
+    icon: "circle-08",
+    text: "Civil",
     link: "/"
   },
   {
-    icon: "caps-small",
-    text: "Google",
+    icon: "settings",
+    text: "Worker",
+    link: "/"
+  },
+  {
+    icon: "single-02",
+    text: "Site manager",
+    link: "/"
+  },
+  {
+    icon: "hat-3",
+    text: "Work manager",
+    link: "/"
+  },
+  {
+    icon: "istanbul",
+    text: "Contractor",
+    link: "/"
+  },
+  {
+    icon: "shop",
+    text: "Customer",
     link: "/"
   }
 ];
