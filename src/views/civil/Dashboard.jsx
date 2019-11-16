@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row, Col, Card } from "reactstrap";
 import { useData } from "../../contexts/data-context"
 import Header from "../../components/Headers/Header.jsx";
@@ -7,19 +7,8 @@ import Map from "../../components/Maps/Map.jsx";
 import _ from "lodash";
 import ProjectTable from "./ProjectTable";
 
-const style = {
-  marginBottom: '10px',
-  backgroundColor: '#ced4da',
-  padding: '10px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  borderRadius: '4px'
-};
-
 const Dashboard = ({ match, location }) => {
   const { data } = useData();
-  const [openSite, setOpenSite] = useState();
-  const [hover, setHover] = useState(false);
 
   var filteredData = data.filter(work => work.end_limit_date.length < 1);
 
