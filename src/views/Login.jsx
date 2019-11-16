@@ -59,7 +59,7 @@ const loginRoles = [
   {
     icon: "single-02",
     text: "Site manager",
-    link: "/site-manager"
+    link: "/site-manager/Teemu"
   },
   {
     icon: "hat-3",

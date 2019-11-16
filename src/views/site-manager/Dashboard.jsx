@@ -2,112 +2,36 @@ import React, { useState } from "react";
 import {
   Container,
   Row,
-  Button,
-  Card,
-  CardHeader,
-  CardFooter,
-  Table,
-  Input,
-  Badge
+  Card
 } from "reactstrap";
 
 import Header from "../../components/Headers/Header.jsx";
+import Map from '../../components/Maps/Map';
+import TaskCard from './TaskCard'
 
-const initialTask = {
-  orderId: '',
-  description: '',
-  employee: ''
-}
+import { useData } from "../../contexts/data-context"
+import _ from "lodash"
 
 const Dashboard = ({ match, location }) => {
-  const [isCreating, setCreate] = useState(false)
-  const [task, setTask] = useState({ ...initialTask })
-  console.log(task)
+  console.log(match.params.id)
+  const { data } = useData();
+  const dataBySites = _.values(_.groupBy(data.filter(d => !!d.location && d.supervisor === match.params.id), "location.lat"));
+
   return (
     <>
       <Header />
       <Container className="mt--7" fluid>
+      <Row style={{ marginBottom: '20px' }}>
+          <TaskCard tasks={undefined} onCreateTask={(task) => console.log(task)}/>
+        </Row>
         <Row>
-          <div className="col">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <h3 className="mb-0">Projects</h3>
-              </CardHeader>
-              <Table className="align-items-center table-flush" responsive>
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Order_ID</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Assignee</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Placeholder</td>
-                    <td>Placeholder</td>
-                    <td>Placeholder</td>
-                    <td>Placeholder</td>
-                  </tr>
-                  {isCreating && (
-                    <tr>
-                      <td>
-                        <Input
-                          type="select"
-                          value={task.orderId}
-                          onChange={(e) => setTask({ ...task, orderId: e.target.value })}
-                          placeholder="Select order ID">
-                          {/* map orderIds here */}
-                          <option>1234567</option>
-                          <option>12341245167</option>
-                          <option>12345fsgag7</option>
-                          <option>1234qwert67</option>
-                        </Input>
-                      </td>
-                      <td>
-                        <Input
-                          type="textarea"
-                          placeholder="Description of the task"
-                          value={task.description}
-                          onChange={(e) => setTask({ ...task, description: e.target.value })} />
-                      </td>
-                      <td>
-                        <Input
-                          type="select"
-                          placeholder="Employee"
-                          value={task.employee}
-                          onChange={(e) => setTask({ ...task, employee: e.target.value })}
-                        >
-                          {/* map employee names */}
-                          <option>Ake</option>
-                          <option>Make</option>
-                          <option>Pera</option>
-                          <option>Mä</option>
-                        </Input>
-                      </td>
-                      <td><Badge style={{ width: '80%' }} color="info">pending</Badge></td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
-              <CardFooter style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                {isCreating && (<Button color="primary" style={{ marginRight: '10px' }} onClick={() => setCreate(false)}>Cancel</Button>)}
-                <Button
-                  color="info"
-                  disabled={
-                    isCreating &&
-                    task.description.length < 5 &&
-                    task.employee.length < 1 &&
-                    task.orderId.length < 1
-                  }
-                  onClick={() =>
-                    isCreating ?
-                      console.log(`Creating task: ${JSON.stringify(task, null, 2)}`) :
-                      setCreate(true)}>Create new task</Button>
-              </CardFooter>
+            <div className="col">
+            <Card className="shadow border-0">
+              <Map data={dataBySites} />
             </Card>
           </div>
         </Row>
+        
       </Container>
     </>
   );

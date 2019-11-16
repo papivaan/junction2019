@@ -136,6 +136,13 @@ export const siteManagerRoutes = [
     icon: "ni ni-glasses-2 text-primary",
     component: Index,
     layout: "/site-manager"
+  },
+  {
+    path: "/:id",
+    name: "manager",
+    icon: "ni ni-glasses-2 text-primary",
+    component: SiteManagerDashboard,
+    layout: "/site-manager"
   }
 ];
 

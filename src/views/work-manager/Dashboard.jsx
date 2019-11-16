@@ -14,7 +14,7 @@ import _ from "lodash"
 const Dashboard = ({ match, location }) => {
   const { data } = useData();
   const dataBySites = _.values(_.groupBy(data.filter(d => !!d.location), "location.lat"));
-  console.log(dataBySites)
+
   return (
     <>
       <Header />
