@@ -5,6 +5,7 @@ import {
     CardBody,
     Table
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 
 const ProjectTable = (props) => {
@@ -31,7 +32,7 @@ const ProjectTable = (props) => {
                     <tbody>
                         {data.map((prop, ind) => (
                             <tr>
-                                <td>{prop.order}</td>
+                                <td><Link to={'/civil/project/' + prop.order}>{prop.order}</Link></td>
                                 <td>{prop.short_text}</td>
                                 <td>{prop.map_data.candidates[0] ? prop.map_data.candidates[0].formatted_address : null}</td>
                                 <td>{prop.supervisor}</td>

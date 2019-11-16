@@ -25,6 +25,7 @@ import Icons from "./views/examples/Icons.jsx";
 
 // Civil views
 import CivilDashboard from "./views/civil/Dashboard";
+import CivilProject from "./views/civil/Project";
 
 // Worker views
 import WorkerDashboard from "./views/worker/Dashboard";
@@ -108,6 +109,13 @@ export const civilRoutes = [
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: CivilDashboard,
+    layout: "/civil"
+  },
+  {
+    path: "/project/:id",
+    name: "Project view",
+    icon: "ni ni-tv-2 text-primary",
+    component: CivilProject,
     layout: "/civil"
   }
 ];
