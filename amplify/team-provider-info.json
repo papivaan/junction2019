@@ -1,0 +1,14 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "junction2019-prod-20191116144215-authRole",
+            "UnauthRoleArn": "arn:aws:iam::217338639931:role/junction2019-prod-20191116144215-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::217338639931:role/junction2019-prod-20191116144215-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "junction2019-prod-20191116144215-deployment",
+            "UnauthRoleName": "junction2019-prod-20191116144215-unauthRole",
+            "StackName": "junction2019-prod-20191116144215",
+            "StackId": "arn:aws:cloudformation:eu-west-1:217338639931:stack/junction2019-prod-20191116144215/86ae0e00-086e-11ea-a4cc-0a7ffa9bc424"
+        }
+    }
+}

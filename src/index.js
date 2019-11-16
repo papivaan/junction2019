@@ -2,6 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
+import API from "@aws-amplify/api";
+import PubSub from "@aws-amplify/pubsub";
+
+import config from "./aws-exports";
+
 import "./assets/vendor/nucleo/css/nucleo.css";
 import "./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/scss/argon-dashboard-react.scss";
@@ -17,6 +22,9 @@ import WorkManagerLayout from "./layouts/WorkManager.jsx";
 import { DataProvider } from "./contexts/data-context";
 
 import * as serviceWorker from "./serviceWorker";
+
+API.configure(config);
+PubSub.configure(config);
 
 const App = () => (
   <DataProvider>
