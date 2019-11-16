@@ -19,7 +19,7 @@ import React from "react";
 
 // reactstrap components
 import { Container, Row } from "reactstrap";
-import KPI from "../KPI";
+import KPI from "../Charts/KPI";
 
 class Header extends React.Component {
   render() {

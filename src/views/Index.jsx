@@ -31,7 +31,7 @@ import {
 import { chartOptions, parseOptions } from "../variables/charts.jsx";
 
 import Header from "../components/Headers/Header.jsx";
-import TabbedLineChart from "../components/Charts/TabbedLineChart";
+import MixedChart from "../components/Charts/MixedChart";
 import BarChart from "../components/Charts/BarChart";
 
 import useComponentWillMount from "../hooks/useComponentWillMount";
@@ -50,7 +50,22 @@ const Index = () => {
       <Container className="mt--7" fluid>
         <Row>
           <Col className="mb-5 mb-xl-0" xl="8">
-            <TabbedLineChart />
+          <MixedChart
+              title="Budget comparison"
+              data={{
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                  label: 'Actual',
+                  type: 'bar',
+                  data: [51, 65, 40, 49, 60, 37, 22]
+                },
+                {
+                  label: 'Budget',
+                  type: 'bar',
+                  data: [51, 70, 40, 49, 60, 37, 40]
+                },
+                ]
+              }} />
           </Col>
           <Col xl="4">
             <BarChart />
