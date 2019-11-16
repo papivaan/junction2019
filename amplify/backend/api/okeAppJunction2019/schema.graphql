@@ -1,0 +1,20 @@
+type Employee @model {
+  id: ID!
+  name: String!
+  phone: String
+  tasks: [Task] @connection(name: "EmployeeTasks")
+}
+
+type Task @model {
+  id: ID!
+  orderId: Int!
+  description: String
+  assignee: Employee @connection(name: "EmployeeTasks")
+  status: Status
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  DONE
+}

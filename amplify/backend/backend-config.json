@@ -1,0 +1,20 @@
+{
+	"api": {
+		"okeAppJunction2019": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "junction2019-api-key",
+							"apiKeyExpirationDays": "30"
+						}
+					}
+				}
+			}
+		}
+	}
+}
