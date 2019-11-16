@@ -43,13 +43,14 @@
     "react-google-maps": "9.4.5",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.8",
-    "reactstrap": "7.1.0"
+    "reactstrap": "7.1.0",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
-    "netlify-cli": "^2.21.0",
     "@types/googlemaps": "3.30.18",
     "@types/markerclustererplus": "2.1.33",
     "@types/react": "16.8.7",
+    "netlify-cli": "^2.21.0",
     "typescript": "3.3.3333"
   }
 }
