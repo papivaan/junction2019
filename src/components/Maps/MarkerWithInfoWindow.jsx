@@ -10,7 +10,10 @@ const MarkerWithInfoWindow = (props) => {
   return (
     <Marker onClick={() => setOpen(true)} position={props.location}>
       {isOpen && (
-        <InfoWindow onCloseClick={() => setOpen(false)} options={{ closeBoxURL: ``, enableEventPropagation: true }}>
+        <InfoWindow onCloseClick={() => {
+          setOpen(false)
+          setCopy('')
+        }} options={{ closeBoxURL: ``, enableEventPropagation: true }}>
           <div>
             <h4>{props.name}</h4>
             {props.site.map(s => (
