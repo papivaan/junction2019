@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import API, { graphqlOperation } from "@aws-amplify/api";
 
-import { listEmployees } from "../graphql/queries";
+import { listEmployees, listTasks } from "../graphql/queries";
 import { onCreateEmployee } from "../graphql/subscriptions";
 
 const useGlobalState = () => {
@@ -9,10 +9,14 @@ const useGlobalState = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "QUERY":
-        return { ...state, employees: action.employees };
+        return { ...state, employees: action.employees, tasks: action.tasks };
 
       case "SUBSCRIPTION":
-        return { ...state, employees: [...state.employees, action.employee] };
+        return {
+          ...state,
+          employees: [...state.employees, action.employee],
+          tasks: [...state.tasks, action.tasks]
+        };
 
       default:
         break;
@@ -35,10 +39,18 @@ const useGlobalState = () => {
   }, []);
 
   const getData = async () => {
-    const employeeData = await API.graphql(graphqlOperation(listEmployees));
+    const employeePromise = API.graphql(graphqlOperation(listEmployees));
+    const taskPromise = API.graphql(graphqlOperation(listTasks));
+
+    const [employeeData, taskData] = await Promise.all([
+      employeePromise,
+      taskPromise
+    ]);
+
     dispatch({
       type: "QUERY",
-      employees: employeeData.data.listEmployees.items
+      employees: employeeData.data.listEmployees.items,
+      tasks: taskData.data.listTasks.items
     });
   };
 

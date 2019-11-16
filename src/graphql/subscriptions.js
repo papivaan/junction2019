@@ -11,6 +11,14 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -28,6 +36,14 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -45,6 +61,14 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -62,6 +86,17 @@ export const onCreateTask = `subscription OnCreateTask {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
@@ -79,6 +114,17 @@ export const onUpdateTask = `subscription OnUpdateTask {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
@@ -96,6 +142,17 @@ export const onDeleteTask = `subscription OnDeleteTask {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
