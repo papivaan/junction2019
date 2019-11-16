@@ -1,13 +1,8 @@
 import React from "react";
 import {
-  Button,
-  Card,
+  Container, Row, Col, Card,
   CardHeader,
-  Progress,
-  Table,
-  Container,
-  Row,
-  Col
+  CardFooter, Table,
 } from "reactstrap";
 
 import Header from "../../components/Headers/Header.jsx";
@@ -18,12 +13,33 @@ const Dashboard = ({ match, location }) => {
       <Header />
       <Container className="mt--7" fluid>
         <Row>
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <h2>kakkaa</h2>
-          </Col>
-          <Col xl="4">
-            <h2>kukkuu</h2>
-          </Col>
+          <div className="col">
+            <Card className="shadow">
+              <CardHeader className="border-0">
+                <h3 className="mb-0">Projects</h3>
+              </CardHeader>
+              <Table className="align-items-center table-flush" responsive>
+                <thead className="thead-light">
+                  <tr>
+                    <th scope="col">Project</th>
+                    <th scope="col">Order</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Assignee</th>
+                    <th scope="col">Completion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Card>
+          </div>
         </Row>
       </Container>
     </>
