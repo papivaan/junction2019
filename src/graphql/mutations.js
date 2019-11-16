@@ -11,6 +11,14 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -28,6 +36,14 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -45,6 +61,14 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
         id
         orderId
         description
+        assignee {
+          id
+          name
+          phone
+          tasks {
+            nextToken
+          }
+        }
         status
       }
       nextToken
@@ -62,6 +86,17 @@ export const createTask = `mutation CreateTask($input: CreateTaskInput!) {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
@@ -79,6 +114,17 @@ export const updateTask = `mutation UpdateTask($input: UpdateTaskInput!) {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
@@ -96,6 +142,17 @@ export const deleteTask = `mutation DeleteTask($input: DeleteTaskInput!) {
       name
       phone
       tasks {
+        items {
+          id
+          orderId
+          description
+          assignee {
+            id
+            name
+            phone
+          }
+          status
+        }
         nextToken
       }
     }
