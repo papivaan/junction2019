@@ -29,7 +29,7 @@ const App = () => (
           render={props => <SiteManagerLayout {...props} />}
         />
         <Route path="/auth" render={props => <AuthLayout {...props} />} />
-        <Redirect from="/" to="/admin/index" />
+        <Redirect from="/" to="/auth/login" />
       </Switch>
     </BrowserRouter>
   </DataProvider>

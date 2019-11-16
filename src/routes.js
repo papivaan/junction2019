@@ -30,7 +30,7 @@ import DynamicTest from "./views/DynamicTest.jsx";
 
 export const exampleRoutes = [
   {
-    path: "/index",
+    path: "/",
     name: "Examples",
     icon: "ni ni-tv-2 text-blue",
     component: Index,
@@ -68,7 +68,7 @@ export const exampleRoutes = [
 
 export const adminRoutes = [
   {
-    path: "/index",
+    path: "/",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: Index,
@@ -95,7 +95,7 @@ export const adminRoutes = [
 
 export const siteManagerRoutes = [
   {
-    path: "/index",
+    path: "/",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: SiteManagerDashboard,
