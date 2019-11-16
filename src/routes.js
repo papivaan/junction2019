@@ -26,6 +26,9 @@ import Icons from "./views/examples/Icons.jsx";
 // Civil views
 import CivilDashboard from "./views/civil/Dashboard";
 
+// Worker views
+import WorkerDashboard from "./views/worker/Dashboard";
+
 // Site manager views
 import SiteManagerDashboard from "./views/site-manager/Dashboard.jsx";
 
@@ -103,6 +106,16 @@ export const civilRoutes = [
     icon: "ni ni-tv-2 text-primary",
     component: CivilDashboard,
     layout: "/civil"
+  }
+];
+
+export const workerRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: WorkerDashboard,
+    layout: "/worker"
   }
 ];
 

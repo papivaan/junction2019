@@ -54,7 +54,7 @@ const loginRoles = [
   {
     icon: "settings",
     text: "Worker",
-    link: "/"
+    link: "/worker"
   },
   {
     icon: "single-02",

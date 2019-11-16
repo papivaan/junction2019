@@ -10,7 +10,7 @@ const Dashboard = ({ match, location }) => {
       <Container className="mt--7" fluid>
         <Row>
           <Col className="mb-5 mb-xl-0" xl="8">
-            <h2>Civil</h2>
+            <h2>Worker</h2>
           </Col>
           <Col xl="4">
             <h2>Dashboard</h2>

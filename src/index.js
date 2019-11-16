@@ -10,6 +10,7 @@ import AuthLayout from "./layouts/Auth.jsx";
 import ExampleLayout from "./layouts/Example.jsx";
 import AdminLayout from "./layouts/Admin.jsx";
 import CivilLayout from "./layouts/Civil.jsx";
+import WorkerLayout from "./layouts/Worker.jsx";
 import SiteManagerLayout from "./layouts/SiteManager.jsx";
 
 import { DataProvider } from "./contexts/data-context";
@@ -26,6 +27,7 @@ const App = () => (
         />
         <Route path="/admin" render={props => <AdminLayout {...props} />} />
         <Route path="/civil" render={props => <CivilLayout {...props} />} />
+        <Route path="/worker" render={props => <WorkerLayout {...props} />} />
         <Route
           path="/site-manager"
           render={props => <SiteManagerLayout {...props} />}
