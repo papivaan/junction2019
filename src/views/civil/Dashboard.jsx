@@ -16,11 +16,6 @@ const style = {
   borderRadius: '4px'
 };
 
-function filterData(data) {
-  var filtered;
-  return filtered;
-}
-
 const Dashboard = ({ match, location }) => {
   const { data } = useData();
   const [openSite, setOpenSite] = useState();
