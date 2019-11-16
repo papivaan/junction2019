@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Card } from "reactstrap";
 import { useData } from "../../contexts/data-context"
 import Header from "../../components/Headers/Header.jsx";
+import Map from "../../components/Maps/Map.jsx";
 
 import _ from "lodash";
+import ProjectTable from "./ProjectTable";
 
 const style = {
   marginBottom: '10px',
@@ -14,55 +16,41 @@ const style = {
   borderRadius: '4px'
 };
 
+function filterData(data) {
+  var filtered;
+  return filtered;
+}
+
 const Dashboard = ({ match, location }) => {
   const { data } = useData();
   const [openSite, setOpenSite] = useState();
   const [hover, setHover] = useState(false);
 
-  const filteredData = _.uniqBy(data, "short_text");
+  var filteredData = data.filter(work => work.end_limit_date.length < 1);
+
   console.log(filteredData);
+  //const filteredData = _.uniqBy(data, "short_text");
+
+  const dataBySites = _.values(_.groupBy(data.filter(d => !!d.location), "location.lat"));
+
   return (
     <>
       <Header isCivil />
       <Container className="mt--7" fluid>
         <Row>
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <h2>Current worksites:</h2>
+          <div className="col">
+            <Card className="shadow border-0">
+              <Map data={dataBySites} />
+            </Card>
+          </div>
+        </Row>
+        <Row>
+          <Col className="mb-5 mb-xl-0" xl="12">
+            <ProjectTable
+              data={filteredData}
+            />
           </Col>
         </Row>
-        {filteredData.map((d, i) => {
-          return (
-            <Row
-              key={i}
-              style={hover ?
-                { marginBottom: '10px', cursor: 'pointer' } :
-                { marginBottom: '10px' }
-              }
-              onClick={() =>
-                openSite !== d.short_text ?
-                  setOpenSite(d.short_text) :
-                  setOpenSite(undefined)}
-              onMouseOver={() => setHover(true)}
-              onMouseOut={() => setHover(false)}>
-              <Col className="mb-xl-0" xl="8">
-                <h3>{d.short_text}</h3>
-              </Col>
-              {openSite === d.short_text && (<Col className="mb-xl-0" xl="8">
-                {data.filter(d => d.short_text === openSite).map((d, i) => {
-                  return (
-                    <div
-                      key={i}
-                      style={style}>
-                      <div>{d.description}</div>
-                      <div>{`Supervisor: ${d.supervisor}`}</div>
-                      <div>PROGRESS: N/A</div>
-                    </div>
-                  )
-                })}
-              </Col>)}
-            </Row>
-          )
-        })}
       </Container>
     </>
   );
