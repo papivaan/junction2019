@@ -84,7 +84,12 @@ Chart.elements.Rectangle.prototype.draw = function() {
   // Corner points, from bottom-left to bottom-right clockwise
   // | 1 2 |
   // | 0 3 |
-  var corners = [[left, bottom], [left, top], [right, top], [right, bottom]];
+  var corners = [
+    [left, bottom],
+    [left, top],
+    [right, top],
+    [right, bottom]
+  ];
 
   // Find first (starting) corner with fallback to 'bottom'
   var borders = ["bottom", "left", "top", "right"];
@@ -115,7 +120,7 @@ Chart.elements.Rectangle.prototype.draw = function() {
     let x = corners[1][0];
     let y = corners[1][1];
     // eslint-disable-next-line
-    var radius: any = cornerRadius;
+    var radius = cornerRadius;
 
     // Fix radius being too large
     if (radius > height / 2) {
