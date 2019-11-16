@@ -70,6 +70,14 @@ const Index = () => {
           <Col xl="4">
             <PieChart
               title="Pie chart"
+              data={
+                [
+                  { label: 'Red', value: 300 },
+                  { label: 'Blue', value: 50 },
+                  { label: 'Paavo', value: 100},
+                  { label: 'Keijo', value: 45}
+                ]
+              }
             />
           </Col>
         </Row>
