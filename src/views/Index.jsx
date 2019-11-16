@@ -17,12 +17,10 @@
 */
 import React from "react";
 import Chart from "chart.js";
-import { Bar } from "react-chartjs-2";
 import {
   Button,
   Card,
   CardHeader,
-  CardBody,
   Progress,
   Table,
   Container,
@@ -30,14 +28,11 @@ import {
   Col
 } from "reactstrap";
 
-import {
-  chartOptions,
-  parseOptions,
-  chartExample2
-} from "../variables/charts.jsx";
+import { chartOptions, parseOptions } from "../variables/charts.jsx";
 
 import Header from "../components/Headers/Header.jsx";
 import TabbedLineChart from "../components/Charts/TabbedLineChart";
+import BarChart from "../components/Charts/BarChart";
 
 import useComponentWillMount from "../hooks/useComponentWillMount";
 
@@ -58,27 +53,7 @@ const Index = () => {
             <TabbedLineChart />
           </Col>
           <Col xl="4">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-muted ls-1 mb-1">
-                      Performance
-                    </h6>
-                    <h2 className="mb-0">Total orders</h2>
-                  </div>
-                </Row>
-              </CardHeader>
-              <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  <Bar
-                    data={chartExample2.data}
-                    options={chartExample2.options}
-                  />
-                </div>
-              </CardBody>
-            </Card>
+            <BarChart />
           </Col>
         </Row>
         <Row className="mt-5">
