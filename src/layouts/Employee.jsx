@@ -24,9 +24,9 @@ import AdminNavbar from "../components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "../components/Footers/AdminFooter.jsx";
 import Sidebar from "../components/Sidebar/Sidebar.jsx";
 
-import { workerRoutes as routes } from "../routes";
+import { employeeRoutes as routes } from "../routes";
 
-class Worker extends React.Component {
+class Employee extends React.Component {
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -34,7 +34,7 @@ class Worker extends React.Component {
   }
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/worker") {
+      if (prop.layout === "/employee") {
         return (
           <Route
             exact
@@ -67,7 +67,7 @@ class Worker extends React.Component {
           {...this.props}
           routes={routes}
           logo={{
-            innerLink: "/civil",
+            innerLink: "/employee",
             imgSrc: require("../assets/img/brand/argon-react.png"),
             imgAlt: "..."
           }}
@@ -87,4 +87,4 @@ class Worker extends React.Component {
   }
 }
 
-export default Worker;
+export default Employee;

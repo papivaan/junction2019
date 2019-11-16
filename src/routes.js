@@ -27,8 +27,9 @@ import Icons from "./views/examples/Icons.jsx";
 import CivilDashboard from "./views/civil/Dashboard";
 import CivilProject from "./views/civil/Project";
 
-// Worker views
-import WorkerDashboard from "./views/worker/Dashboard";
+// Employee views
+import EmployeeDashboard from "./views/employee/Dashboard";
+import EmployeeTasks from "./views/employee/Tasks";
 
 // Site manager views
 import SiteManagerDashboard from "./views/site-manager/Dashboard.jsx";
@@ -120,13 +121,20 @@ export const civilRoutes = [
   }
 ];
 
-export const workerRoutes = [
+export const employeeRoutes = [
   {
     path: "/",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
-    component: WorkerDashboard,
-    layout: "/worker"
+    component: EmployeeDashboard,
+    layout: "/employee"
+  },
+  {
+    path: "/:id",
+    name: "Employee tasks",
+    icon: "ni ni-box-2 text-primary",
+    component: EmployeeTasks,
+    layout: "/employee"
   }
 ];
 

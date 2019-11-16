@@ -19,7 +19,7 @@ import AuthLayout from "./layouts/Auth.jsx";
 import ExampleLayout from "./layouts/Example.jsx";
 import AdminLayout from "./layouts/Admin.jsx";
 import CivilLayout from "./layouts/Civil.jsx";
-import WorkerLayout from "./layouts/Worker.jsx";
+import EmployeeLayout from "./layouts/Employee.jsx";
 import SiteManagerLayout from "./layouts/SiteManager.jsx";
 import WorkManagerLayout from "./layouts/WorkManager.jsx";
 
@@ -90,8 +90,8 @@ const App = () => (
             <Route path="/admin" render={props => <AdminLayout {...props} />} />
             <Route path="/civil" render={props => <CivilLayout {...props} />} />
             <Route
-              path="/worker"
-              render={props => <WorkerLayout {...props} />}
+              path="/employee"
+              render={props => <EmployeeLayout {...props} />}
             />
             <Route
               path="/site-manager"
