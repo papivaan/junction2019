@@ -12,6 +12,7 @@ import AdminLayout from "./layouts/Admin.jsx";
 import CivilLayout from "./layouts/Civil.jsx";
 import WorkerLayout from "./layouts/Worker.jsx";
 import SiteManagerLayout from "./layouts/SiteManager.jsx";
+import WorkManagerLayout from "./layouts/WorkManager.jsx";
 
 import { DataProvider } from "./contexts/data-context";
 
@@ -31,6 +32,10 @@ const App = () => (
         <Route
           path="/site-manager"
           render={props => <SiteManagerLayout {...props} />}
+        />
+        <Route
+          path="/work-manager"
+          render={props => <WorkManagerLayout {...props} />}
         />
         <Route path="/auth" render={props => <AuthLayout {...props} />} />
         <Redirect from="/" to="/auth/login" />

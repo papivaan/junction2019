@@ -32,6 +32,9 @@ import WorkerDashboard from "./views/worker/Dashboard";
 // Site manager views
 import SiteManagerDashboard from "./views/site-manager/Dashboard.jsx";
 
+// Work manager views
+import WorkManagerDashboard from "./views/work-manager/Dashboard.jsx";
+
 import DynamicTest from "./views/DynamicTest.jsx";
 
 export const exampleRoutes = [
@@ -133,6 +136,16 @@ export const siteManagerRoutes = [
     icon: "ni ni-glasses-2 text-primary",
     component: Index,
     layout: "/site-manager"
+  }
+];
+
+export const workManagerRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: WorkManagerDashboard,
+    layout: "/work-manager"
   }
 ];
 

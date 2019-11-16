@@ -64,7 +64,7 @@ const loginRoles = [
   {
     icon: "hat-3",
     text: "Work manager",
-    link: "/"
+    link: "/work-manager"
   },
   {
     icon: "istanbul",
