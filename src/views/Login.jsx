@@ -49,12 +49,12 @@ const loginRoles = [
   {
     icon: "circle-08",
     text: "Civil",
-    link: "/examples/maps"
+    link: "/civil"
   },
   {
     icon: "settings",
     text: "Worker",
-    link: "/"
+    link: "/worker"
   },
   {
     icon: "single-02",
@@ -64,7 +64,7 @@ const loginRoles = [
   {
     icon: "hat-3",
     text: "Work manager",
-    link: "/"
+    link: "/work-manager"
   },
   {
     icon: "istanbul",

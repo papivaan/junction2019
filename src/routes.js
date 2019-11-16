@@ -23,8 +23,17 @@ import Maps from "./views/examples/Maps.jsx";
 import Tables from "./views/examples/Tables.jsx";
 import Icons from "./views/examples/Icons.jsx";
 
+// Civil views
+import CivilDashboard from "./views/civil/Dashboard";
+
+// Worker views
+import WorkerDashboard from "./views/worker/Dashboard";
+
 // Site manager views
 import SiteManagerDashboard from "./views/site-manager/Dashboard.jsx";
+
+// Work manager views
+import WorkManagerDashboard from "./views/work-manager/Dashboard.jsx";
 
 import DynamicTest from "./views/DynamicTest.jsx";
 
@@ -93,6 +102,26 @@ export const adminRoutes = [
   }
 ];
 
+export const civilRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: CivilDashboard,
+    layout: "/civil"
+  }
+];
+
+export const workerRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: WorkerDashboard,
+    layout: "/worker"
+  }
+];
+
 export const siteManagerRoutes = [
   {
     path: "/",
@@ -110,6 +139,16 @@ export const siteManagerRoutes = [
   }
 ];
 
+export const workManagerRoutes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: WorkManagerDashboard,
+    layout: "/work-manager"
+  }
+];
+
 const routes = [
   ...adminRoutes,
   {
@@ -120,6 +159,7 @@ const routes = [
     layout: "/auth"
   },
   // Role based routes
+  ...civilRoutes,
   ...siteManagerRoutes,
   // Example routes
   ...exampleRoutes
