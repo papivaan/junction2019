@@ -3,6 +3,7 @@ type Employee @model {
   name: String!
   phone: String
   tasks: [Task] @connection(name: "EmployeeTasks")
+  createdAt: AWSDateTime
 }
 
 type Task @model {
@@ -11,6 +12,7 @@ type Task @model {
   description: String
   assignee: Employee @connection(name: "EmployeeTasks")
   status: Status
+  createdAt: AWSDateTime
 }
 
 enum Status {

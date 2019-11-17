@@ -18,11 +18,14 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -43,11 +46,14 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -68,11 +74,14 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -94,13 +103,17 @@ export const onCreateTask = `subscription OnCreateTask {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;
@@ -122,13 +135,17 @@ export const onUpdateTask = `subscription OnUpdateTask {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;
@@ -150,13 +167,17 @@ export const onDeleteTask = `subscription OnDeleteTask {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;

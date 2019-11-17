@@ -42,13 +42,13 @@ const statusBadge = status => {
   switch (status) {
     case "PENDING":
       return <PendingBadge />;
-      break;
+
     case "IN_PROGRESS":
       return <InProgressBadge />;
-      break;
+
     case "DONE":
       return <DoneBadge />;
-      break;
+
     default:
       return <PendingBadge />;
   }
@@ -61,14 +61,17 @@ const TaskCard = ({ orders, manager }) => {
     gql`
       ${listTasks}
     `,
-    { pollInterval: 1000 }
+    { pollInterval: 2000 }
   );
   const { data: employeeData, loading: employeesLoading } = useQuery(
     gql`
       ${listEmployees}
     `
   );
-  const [createTaskMutation, { data: mutationData }] = useMutation(
+  const [
+    createTaskMutation,
+    { data: mutationData, error: mutationError }
+  ] = useMutation(
     gql`
       ${createTask}
     `
@@ -80,9 +83,9 @@ const TaskCard = ({ orders, manager }) => {
   if (!employeesLoading && employeeData && employeeData.listEmployees)
     employees = employeeData.listEmployees.items;
   if (!tasksLoading && taskData && taskData.listTasks)
-    filteredTasks = taskData.listTasks.items.filter(task =>
-      orders.some(o => o.id === task.orderId)
-    );
+    filteredTasks = taskData.listTasks.items
+      .filter(task => orders.some(o => o.id === task.orderId))
+      .sort((a, b) => a.createdAt < b.createdAt);
   if (task.orderId === "" && orders.length >= 1)
     setTask({ ...task, orderId: orders[0].id, orderText: orders[0].text });
   if (task.employeeId === "" && employees.length >= 1)
@@ -105,8 +108,8 @@ const TaskCard = ({ orders, manager }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredTasks.map((task, i) => (
-              <tr key={i}>
+            {filteredTasks.map(task => (
+              <tr key={task.id}>
                 <td>{orders.find(o => o.id === task.orderId).text}</td>
                 <td>
                   <Link to={`/site-manager/project/${task.orderId}`}>
@@ -133,9 +136,11 @@ const TaskCard = ({ orders, manager }) => {
                       });
                     }}
                   >
-                    {orders.map(order => (
-                      <option key={order.id}>{order.text}</option>
-                    ))}
+                    {orders
+                      .sort((a, b) => a.id > b.id)
+                      .map(order => (
+                        <option key={order.id}>{order.text}</option>
+                      ))}
                   </Input>
                 </td>
                 <td>
@@ -189,7 +194,7 @@ const TaskCard = ({ orders, manager }) => {
                   >
                     {/* map employee names */}
                     {employees.map(e => (
-                      <option>{e.name}</option>
+                      <option key={e.id}>{e.name}</option>
                     ))}
                   </Input>
                 </td>
@@ -215,6 +220,7 @@ const TaskCard = ({ orders, manager }) => {
               color="info"
               disabled={isCreating && task.description.length < 5}
               onClick={() => {
+                console.log(task);
                 createTaskMutation({
                   variables: {
                     input: {
@@ -236,6 +242,7 @@ const TaskCard = ({ orders, manager }) => {
               Create new task
             </Button>
           )}
+          {mutationError && console.log(mutationError)}
         </CardFooter>
       </Card>
     </div>

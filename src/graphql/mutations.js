@@ -18,11 +18,14 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -43,11 +46,14 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -68,11 +74,14 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -94,13 +103,17 @@ export const createTask = `mutation CreateTask($input: CreateTaskInput!) {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;
@@ -122,13 +135,17 @@ export const updateTask = `mutation UpdateTask($input: UpdateTaskInput!) {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;
@@ -150,13 +167,17 @@ export const deleteTask = `mutation DeleteTask($input: DeleteTaskInput!) {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;

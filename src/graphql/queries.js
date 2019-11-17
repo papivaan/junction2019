@@ -18,11 +18,14 @@ export const getEmployee = `query GetEmployee($id: ID!) {
           tasks {
             nextToken
           }
+          createdAt
         }
         status
+        createdAt
       }
       nextToken
     }
+    createdAt
   }
 }
 `;
@@ -45,11 +48,14 @@ export const listEmployees = `query ListEmployees(
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     nextToken
   }
@@ -73,13 +79,17 @@ export const getTask = `query GetTask($id: ID!) {
             id
             name
             phone
+            createdAt
           }
           status
+          createdAt
         }
         nextToken
       }
+      createdAt
     }
     status
+    createdAt
   }
 }
 `;
@@ -103,11 +113,14 @@ export const listTasks = `query ListTasks(
             orderId
             description
             status
+            createdAt
           }
           nextToken
         }
+        createdAt
       }
       status
+      createdAt
     }
     nextToken
   }
