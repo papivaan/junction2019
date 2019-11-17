@@ -31,36 +31,44 @@ const Header = ({ isCivil }) => {
               {/* Card stats */}
               <Row>
                 <KPI
-                  title="Eka"
-                  value="100.00"
+                  title="Open orders"
+                  value="242"
                   color="red"
-                  secondaryTitle="Viime kuussa"
-                  secondaryValue="5000000"
-                  icon={<i className="fas fa-chart-pie" />}
+                  icon={<i className="ni ni-archive-2" />}
+                  secondaryTitle="new opened this week"
+                  secondaryValue="16"
+                  secondaryClassName="text-primary mr-2"
+                  secondaryIcon={<i className="fa fa-arrow-right" />}
                 />
                 <KPI
-                  title="New users"
-                  value="2,356"
+                  title="Daily tasks completed this week"
+                  value="73"
                   color="orange"
-                  secondaryTitle="Since last week"
-                  secondaryValue="3.48%"
-                  icon={<i className="fas fa-chart-bar" />}
+                  secondaryTitle="daily average"
+                  secondaryValue="85,3"
+                  secondaryClassName="text-info mr-2"
+                  secondaryIcon={<i className="fa fa-arrow-up" />}
+                  icon={<i className="ni ni-check-bold" />}
                 />
                 <KPI
-                  title="Employees"
-                  value="924"
-                  color="green"
-                  secondaryTitle="Since yesterday"
-                  secondaryValue="1.10%"
-                  icon={<i className="fas fa-users" />}
-                />
-                <KPI
-                  title="Performance"
+                  title="Customer satisfaction"
                   value="69.5%"
                   color="blue"
-                  secondaryTitle="Since last month"
-                  secondaryValue="12%"
-                  icon={<i className="fas fa-percent" />}
+                  secondaryTitle="Better than last month"
+                  secondaryValue="6,0 %"
+                  secondaryClassName="text-success mr-2"
+                  secondaryIcon={<i className="fa fa-arrow-up" />}
+                  icon={<i className="ni ni-satisfied" />}
+                />
+                <KPI
+                  title="Invoicing this month"
+                  value="364 301 €"
+                  color="blue"
+                  secondaryTitle="Higher than estimate"
+                  secondaryValue="14,5 %"
+                  secondaryClassName="text-warning mr-2"
+                  secondaryIcon={<i className="fa fa-arrow-up" />}
+                  icon={<i className="ni ni-credit-card" />}
                 />
               </Row>
             </div>

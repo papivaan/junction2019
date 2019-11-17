@@ -24,7 +24,7 @@ const Dashboard = ({ match, location }) => {
       <Header isCivil />
       <Container className="mt--7" fluid>
         <Row>
-          <div className="col">
+          <div className="col mb-4">
             <Card className="shadow border-0">
               <Map data={dataBySites} isCivil />
             </Card>
