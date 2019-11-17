@@ -41,7 +41,7 @@ const Header = ({ isCivil }) => {
                   secondaryIcon={<i className="fa fa-arrow-right" />}
                 />
                 <KPI
-                  title="Daily tasks completed this week"
+                  title="Tasks completed daily"
                   value="73"
                   color="orange"
                   secondaryTitle="daily average"
