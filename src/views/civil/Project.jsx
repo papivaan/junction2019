@@ -115,7 +115,7 @@ const ProgressBar = ({ listTasks: { items }, ...props }) => {
   return (
     <>
       <div className="text-center">
-        {donePercentage}% done, {progressPercentage}% in progress
+        {donePercentage.toFixed(2)}% done, {progressPercentage}% in progress
       </div>
       <Progress multi {...props}>
         <Progress bar color="success" value={donePercentage} />
