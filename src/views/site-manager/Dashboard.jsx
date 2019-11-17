@@ -21,7 +21,7 @@ const Dashboard = ({ match, location }) => {
       data.filter(d => !!d.location && d.supervisor === match.params.id),
       "location.lat"
     )
-  ).slice(200);
+  ).slice(300);
 
   const orders = _.flatMap(dataBySites, d => d).map(d => ({
     text: d.short_text,
