@@ -160,6 +160,13 @@ export const siteManagerRoutes = [
     icon: "ni ni-glasses-2 text-primary",
     component: SiteManagerDashboard,
     layout: "/site-manager"
+  },
+  {
+    path: "/project/:id",
+    name: "Project view",
+    icon: "ni ni-tv-2 text-primary",
+    component: CivilProject,
+    layout: "/site-manager"
   }
 ];
 

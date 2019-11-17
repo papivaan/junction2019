@@ -8,6 +8,7 @@ import {
   Input,
   Badge
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { listTasks, listEmployees } from "../../graphql/queries";
@@ -53,7 +54,7 @@ const statusBadge = status => {
   }
 };
 
-const TaskCard = ({ orders }) => {
+const TaskCard = ({ orders, manager }) => {
   let employees = [];
   let filteredTasks = [];
   const { data: taskData, loading: tasksLoading } = useQuery(
@@ -107,7 +108,11 @@ const TaskCard = ({ orders }) => {
             {filteredTasks.map((task, i) => (
               <tr key={i}>
                 <td>{orders.find(o => o.id === task.orderId).text}</td>
-                <td>{task.orderId}</td>
+                <td>
+                  <Link to={`/site-manager/project/${task.orderId}`}>
+                    {task.orderId}
+                  </Link>
+                </td>
                 <td>{task.description}</td>
                 <td>{task.assignee.name}</td>
                 <td>{statusBadge(task.status)}</td>
