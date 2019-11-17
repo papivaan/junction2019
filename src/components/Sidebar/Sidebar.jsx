@@ -17,7 +17,7 @@
 */
 /*eslint-disable*/
 import React from "react";
-import { NavLink as NavLinkRRD, Link } from "react-router-dom";
+import { NavLink as NavLinkRRD, Link, useHistory } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
@@ -129,7 +129,11 @@ class Sidebar extends React.Component {
           </button>
           {/* Brand */}
           {logo ? (
-            <NavbarBrand className="pt-2 pb-2" {...navbarBrandProps} style={{ backgroundColor: '#0000bf', borderRadius: '6px' }}>
+            <NavbarBrand
+              className="pt-2 pb-2"
+              {...navbarBrandProps}
+              style={{ backgroundColor: "#0000bf", borderRadius: "6px" }}
+            >
               <img
                 alt={logo.imgAlt}
                 className="navbar-brand-img"
@@ -139,21 +143,6 @@ class Sidebar extends React.Component {
           ) : null}
           {/* User */}
           <Nav className="align-items-center d-md-none">
-            <UncontrolledDropdown nav>
-              <DropdownToggle nav className="nav-link-icon">
-                <i className="ni ni-bell-55" />
-              </DropdownToggle>
-              <DropdownMenu
-                aria-labelledby="navbar-default_dropdown_1"
-                className="dropdown-menu-arrow"
-                right
-              >
-                <DropdownItem>Action</DropdownItem>
-                <DropdownItem>Another action</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Something else here</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
             <UncontrolledDropdown nav>
               <DropdownToggle nav>
                 <Media className="align-items-center">
@@ -169,27 +158,8 @@ class Sidebar extends React.Component {
                 <DropdownItem className="noti-title" header tag="div">
                   <h6 className="text-overflow m-0">Welcome!</h6>
                 </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
-                  <i className="ni ni-single-02" />
-                  <span>My profile</span>
-                </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
-                  <i className="ni ni-settings-gear-65" />
-                  <span>Settings</span>
-                </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
-                  <i className="ni ni-calendar-grid-58" />
-                  <span>Activity</span>
-                </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
-                  <i className="ni ni-support-16" />
-                  <span>Support</span>
-                </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                  <i className="ni ni-user-run" />
-                  <span>Logout</span>
-                </DropdownItem>
+                <LogoutButton />
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -205,10 +175,10 @@ class Sidebar extends React.Component {
                         <img alt={logo.imgAlt} src={logo.imgSrc} />
                       </Link>
                     ) : (
-                        <a href={logo.outterLink}>
-                          <img alt={logo.imgAlt} src={logo.imgSrc} />
-                        </a>
-                      )}
+                      <a href={logo.outterLink}>
+                        <img alt={logo.imgAlt} src={logo.imgSrc} />
+                      </a>
+                    )}
                   </Col>
                 ) : null}
                 <Col className="collapse-close" xs="6">
@@ -253,7 +223,6 @@ class Sidebar extends React.Component {
                   Stara
                 </NavLink>
               </NavItem>
-
             </Nav>
           </Collapse>
         </Container>
@@ -261,6 +230,22 @@ class Sidebar extends React.Component {
     );
   }
 }
+
+const LogoutButton = () => {
+  const history = useHistory();
+  return (
+    <DropdownItem
+      href="/auth/login"
+      onClick={e => {
+        e.preventDefault();
+        history.push("/auth/login");
+      }}
+    >
+      <i className="ni ni-user-run" />
+      <span>Logout</span>
+    </DropdownItem>
+  );
+};
 
 Sidebar.defaultProps = {
   routes: [{}]

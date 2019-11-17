@@ -29,7 +29,7 @@ import {
   Media
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import Search from '../Search'
+import Search from "../Search";
 
 const AdminNavbar = props => {
   const history = useHistory();
