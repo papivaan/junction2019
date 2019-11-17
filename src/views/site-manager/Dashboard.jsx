@@ -23,10 +23,14 @@ const Dashboard = ({ match, location }) => {
     )
   ).slice(300);
 
+  console.log(dataBySites);
+
   const orders = _.flatMap(dataBySites, d => d).map(d => ({
     text: d.short_text,
     id: d.order
   }));
+
+  console.log(orders);
 
   return (
     <>

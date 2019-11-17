@@ -33,7 +33,7 @@ const ProjectTable = props => {
           </thead>
           <tbody>
             {data.map((prop, ind) => (
-              <tr>
+              <tr key={prop.order}>
                 <td>
                   <Link to={"/civil/project/" + prop.order}>{prop.order}</Link>
                 </td>

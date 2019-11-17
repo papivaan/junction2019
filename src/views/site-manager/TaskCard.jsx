@@ -61,7 +61,7 @@ const TaskCard = ({ orders, manager }) => {
     gql`
       ${listTasks}
     `,
-    { pollInterval: 2000 }
+    { pollInterval: 500 }
   );
   const { data: employeeData, loading: employeesLoading } = useQuery(
     gql`
@@ -83,9 +83,9 @@ const TaskCard = ({ orders, manager }) => {
   if (!employeesLoading && employeeData && employeeData.listEmployees)
     employees = employeeData.listEmployees.items;
   if (!tasksLoading && taskData && taskData.listTasks)
-    filteredTasks = taskData.listTasks.items
-      .filter(task => orders.some(o => o.id === task.orderId))
-      .sort((a, b) => a.createdAt < b.createdAt);
+    filteredTasks = taskData.listTasks.items.filter(task =>
+      orders.some(o => o.id === task.orderId)
+    );
   if (task.orderId === "" && orders.length >= 1)
     setTask({ ...task, orderId: orders[0].id, orderText: orders[0].text });
   if (task.employeeId === "" && employees.length >= 1)
@@ -108,19 +108,24 @@ const TaskCard = ({ orders, manager }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredTasks.map(task => (
-              <tr key={task.id}>
-                <td>{orders.find(o => o.id === task.orderId).text}</td>
-                <td>
-                  <Link to={`/site-manager/project/${task.orderId}`}>
-                    {task.orderId}
-                  </Link>
-                </td>
-                <td>{task.description}</td>
-                <td>{task.assignee.name}</td>
-                <td>{statusBadge(task.status)}</td>
-              </tr>
-            ))}
+            {filteredTasks
+              .sort((a, b) => ("" + a.createdAt).localeCompare(b.createdAt))
+              .map(task => {
+                console.log(task);
+                return (
+                  <tr key={task.id}>
+                    <td>{orders.find(o => o.id === task.orderId).text}</td>
+                    <td>
+                      <Link to={`/site-manager/project/${task.orderId}`}>
+                        {task.orderId}
+                      </Link>
+                    </td>
+                    <td>{task.description}</td>
+                    <td>{task.assignee.name}</td>
+                    <td>{statusBadge(task.status)}</td>
+                  </tr>
+                );
+              })}
             {isCreating && (
               <tr key="add-row">
                 <td>
