@@ -18,17 +18,19 @@ const KPI = (props) => {
                         </span>
                     </div>
                     <Col className="col-auto">
-                        <div className="icon icon-shape text-white rounded-circle shadow" style={{backgroundColor: props.color}}>
+                        <div className="icon icon-shape text-white rounded-circle shadow" style={{ backgroundColor: props.color }}>
                             {props.icon}
                         </div>
                     </Col>
                 </Row>
-                <p className="mt-3 mb-0 text-muted text-sm">
-                    <span className="text-success mr-2">
-                        <i className="fa fa-arrow-up" /> {props.secondaryValue}
+                {props.secondaryTitle &&
+                    <p className="mt-3 mb-0 text-muted text-sm">
+                        <span className={props.secondaryClassName}>
+                            {props.secondaryIcon} {props.secondaryValue}
                         </span>{" "}
-                    <span className="text-nowrap">{props.secondaryTitle}</span>
-                </p>
+                        <span className="text-nowrap">{props.secondaryTitle}</span>
+                    </p>
+                }
             </CardBody>
         </Card>
     </Col>);
