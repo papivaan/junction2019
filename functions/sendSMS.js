@@ -20,10 +20,15 @@ exports.handler = async (event, context) => {
   const params = JSON.parse(event.body);
   console.log(params);
 
+  const { phone, order, description, employeeId } = params;
+
   const message = {
     from: "STARA",
-    to: params.phone,
-    message: `You have a new task for work ${params.order}: ${params.description}`
+    to: phone,
+    message: `You have a new task for work ${order}: ${description}
+    
+Check all your tasks at: https://oke-app.netlify.com/employee/${employeeId}
+    `
   };
 
   const postData = querystring.stringify(message);

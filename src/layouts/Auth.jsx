@@ -57,7 +57,8 @@ class Auth extends React.Component {
               <div className="header-body text-center mb-7">
                 <Row className="justify-content-center">
                   <Col lg="5" md="6">
-                    <h1 className="text-white">Welcome oke-app!</h1>
+                    <img src={require("../assets/img/brand/argon-react.png")} />
+                    <h1 className="text-white">Welcome to Oke App by Stara!</h1>
                     <p className="text-lead text-light">
                       Please select role below to try our platform.
                     </p>

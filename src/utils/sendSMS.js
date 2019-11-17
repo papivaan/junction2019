@@ -1,13 +1,14 @@
 import axios from "axios";
 
-export default ({ phone, orderId, description }) => {
+export default ({ phone, orderId, description, employeeId }) => {
   return axios({
     url: "/.netlify/functions/sendSMS",
     method: "POST",
     data: {
       phone,
       order: orderId,
-      description
+      description,
+      employeeId
     }
   })
     .then(() => console.log("Great success!"))

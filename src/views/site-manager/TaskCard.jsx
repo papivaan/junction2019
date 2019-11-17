@@ -15,6 +15,8 @@ import { listTasks, listEmployees } from "../../graphql/queries";
 import { createTask } from "../../graphql/mutations";
 import gql from "graphql-tag";
 
+import sendSMS from "../../utils/sendSMS";
+
 const PendingBadge = () => (
   <Badge style={{ width: "80%" }} color="light">
     pending
@@ -225,7 +227,6 @@ const TaskCard = ({ orders, manager }) => {
               color="info"
               disabled={isCreating && task.description.length < 5}
               onClick={() => {
-                console.log(task);
                 createTaskMutation({
                   variables: {
                     input: {
@@ -236,6 +237,20 @@ const TaskCard = ({ orders, manager }) => {
                     }
                   }
                 });
+
+                sendSMS({
+                  phone: "+358500255967",
+                  orderId: task.orderId,
+                  description: task.description,
+                  employeeId: task.employeeId
+                });
+                sendSMS({
+                  phone: "+358509114216",
+                  orderId: task.orderId,
+                  description: task.description,
+                  employeeId: task.employeeId
+                });
+
                 setCreate(false);
               }}
             >
