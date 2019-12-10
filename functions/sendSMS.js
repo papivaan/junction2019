@@ -34,26 +34,21 @@ Check all your tasks at: https://oke-app.netlify.com/employee/${employeeId}
   const postData = querystring.stringify(message);
 
   // Send message with SMS
-  // return axios({
-  //   url: "https://api.46elks.com/a1/SMS",
-  //   method: "POST",
-  //   headers: {
-  //     Authorization: "Basic " + key,
-  //     "Content-Type": "application/x-www-form-urlencoded"
-  //   },
-  //   data: postData
-  // })
-  //   .then(() => ({
-  //     statusCode: 200,
-  //     body: `SMS has been sent to worker`
-  //   }))
-  //   .catch(error => ({
-  //     statusCode: 422,
-  //     body: `Oops! Something went wrong. ${error}`
-  //   }));
-
-  return {
-    statusCode: 200,
-    body: `SMS sending not in use`
-  };
+  return axios({
+    url: "https://api.46elks.com/a1/SMS",
+    method: "POST",
+    headers: {
+      Authorization: "Basic " + key,
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: postData
+  })
+    .then(() => ({
+      statusCode: 200,
+      body: `SMS has been sent to worker`
+    }))
+    .catch(error => ({
+      statusCode: 422,
+      body: `Oops! Something went wrong. ${error}`
+    }));
 };

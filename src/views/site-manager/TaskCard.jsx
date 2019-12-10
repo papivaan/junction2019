@@ -239,13 +239,13 @@ const TaskCard = ({ orders, manager }) => {
                 });
 
                 sendSMS({
-                  phone: "+358500255967",
+                  phone: "+358442536783",
                   orderId: task.orderId,
                   description: task.description,
                   employeeId: task.employeeId
                 });
                 sendSMS({
-                  phone: "+358509114216",
+                  phone: "+358443578875",
                   orderId: task.orderId,
                   description: task.description,
                   employeeId: task.employeeId
