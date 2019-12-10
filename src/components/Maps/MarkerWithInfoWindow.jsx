@@ -23,6 +23,7 @@ const MarkerWithInfoWindow = props => {
               <div key={s.order} style={{ marginBottom: "5px" }}>
                 <div>
                   <h5>{s.description}</h5>
+                  <a href={`/civil/project/${s.order}`}>{s.order}</a>
                   <div>{`Työnjohtaja: ${s.supervisor}`}</div>
                   {!props.isCivil && (
                     <div style={{ display: "flex", alignItems: "center" }}>
